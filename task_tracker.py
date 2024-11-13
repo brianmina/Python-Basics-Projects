@@ -33,6 +33,34 @@ def incomplete_tasks():
     print()
 
 
+def delete_task(task_name):
+    # This function will allow the user to remove a specific task by name.
+    # Set a flag to check if the task was found
+    task_found = False
+    for index, task in enumerate(tasks):
+        if task['task'] == task_name:
+            del tasks[index]
+            print(f"Task '{task_name}' has been deleted.")
+            task_found = True
+            break # pending to correct the iteration here, it is printing every time it loops until it founds the task
+        
+    if not task_found:
+        print(f"Task '{task_name}' not found.")
+
+
+def mark_as_complete(task_name):
+    #This task allows you to mark a task as complete if it exists in the task list
+    for task in tasks:
+        if task['task'] == task_name:
+            task['task'] = "complete"
+            print(f"Task '{task_name}' has been marked as complete.")
+            break
+    else:
+        print(f"Task '{task_name}' not found in the task list")
+
+
+
+
 add_task("Do the laundry")
 add_task("Read a book")
 add_task("Do yoga")
@@ -41,3 +69,8 @@ add_task("Study programming")
 
 view_tasks()
 incomplete_tasks()
+
+delete_task("Go to the gym")
+mark_as_complete("Study programming")
+
+#TODO: create a interactive menu 
